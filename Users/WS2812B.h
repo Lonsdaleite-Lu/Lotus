@@ -5,152 +5,156 @@
 #include "stm8s.h"
  
  
-/*ÑÕÉ«ºê¶¨Òå*/								/*R G B*/
-#define	COLOR_LIGHTPINK						0xFFB6C1	//	Ç³·Ûºì
-#define	COLOR_PINK							0xFFC0CB	//	·Ûºì
-#define	COLOR_CRIMSON						0xDC143C	//	ÐÉºì
-#define	COLOR_LAVENDERBLUSH					0xFFF0F5	//	Á³ºìµÄµ­×ÏÉ«
-#define	COLOR_PALEVIOLETRED					0xDB7093	//	²Ô°×µÄ×ÏÂÞÀ¼ºìÉ«
-#define	COLOR_HOTPINK						0xFF69B4	//	ÈÈÇéµÄ·Ûºì
-#define	COLOR_DEEPPINK						0xFF1493	//	Éî·ÛÉ«
-#define	COLOR_MEDIUMVIOLETRED				0xC71585	//	ÊÊÖÐµÄ×ÏÂÞÀ¼ºìÉ«
-#define	COLOR_ORCHID						0xDA70D6	//	À¼»¨µÄ×ÏÉ«
-#define	COLOR_THISTLE						0xD8BFD8	//	¼»
-#define	COLOR_PLUM							0xDDA0DD	//	Àî×Ó
-#define	COLOR_VIOLET						0xEE82EE	//	×ÏÂÞÀ¼
-#define	COLOR_MAGENTA						0xFF00FF	//	Ñóºì
-#define	COLOR_FUCHSIA						0xFF00FF	//	µÆÁýº£ÌÄ(×ÏºìÉ«)
-#define	COLOR_DARKMAGENTA					0x8B008B	//	ÉîÑóºìÉ«
-#define	COLOR_PURPLE						0x800080	//	×ÏÉ«
-#define	COLOR_MEDIUMORCHID					0xBA55D3	//	ÊÊÖÐµÄÀ¼»¨×Ï
-#define	COLOR_DARKVOILET					0x9400D3	//	Éî×ÏÂÞÀ¼É«
-#define	COLOR_DARKORCHID					0x9932CC	//	ÉîÀ¼»¨×Ï
-#define	COLOR_INDIGO						0x4B0082	//	µåÇà
-#define	COLOR_BLUEVIOLET					0x8A2BE2	//	Éî×ÏÂÞÀ¼µÄÀ¶É«
-#define	COLOR_MEDIUMPURPLE					0x9370DB	//	ÊÊÖÐµÄ×ÏÉ«
-#define	COLOR_MEDIUMSLATEBLUE				0x7B68EE	//	ÊÊÖÐµÄ°åÑÒ°µÀ¶»ÒÉ«
-#define	COLOR_SLATEBLUE						0x6A5ACD	//	°åÑÒ°µÀ¶»ÒÉ«
-#define	COLOR_DARKSLATEBLUE					0x483D8B	//	ÉîÑÒ°µÀ¶»ÒÉ«
-#define	COLOR_LAVENDER						0xE6E6FA	//	Ñ¬ÒÂ²Ý»¨µÄµ­×ÏÉ«
-#define	COLOR_GHOSTWHITE					0xF8F8FF	//	ÓÄÁéµÄ°×É«
-#define	COLOR_BLUE							0x0000FF	//	´¿À¶
-#define	COLOR_MEDIUMBLUE					0x0000CD	//	ÊÊÖÐµÄÀ¶É«
-#define	COLOR_MIDNIGHTBLUE					0x191970	//	ÎçÒ¹µÄÀ¶É«
-#define	COLOR_DARKBLUE						0x00008B	//	ÉîÀ¶É«
-#define	COLOR_NAVY							0x000080	//	º£¾üÀ¶
-#define	COLOR_ROYALBLUE						0x4169E1	//	»Ê¼ÒÀ¶
-#define	COLOR_CORNFLOWERBLUE				0x6495ED	//	Ê¸³µ¾ÕµÄÀ¶É«
-#define	COLOR_LIGHTSTEELBLUE				0xB0C4DE	//	µ­¸ÖÀ¶
-#define	COLOR_LIGHTSLATEGRAY				0x778899	//	Ç³Ê¯°å»Ò
-#define	COLOR_SLATEGRAY						0x708090	//	Ê¯°å»Ò
-#define	COLOR_DODERBLUE						0x1E90FF	//	µÀÆæÀ¶
-#define	COLOR_ALICEBLUE						0xF0F8FF	//	°®ÀöË¿À¶
-#define	COLOR_STEELBLUE						0x4682B4	//	¸ÖÀ¶
-#define	COLOR_LIGHTSKYBLUE					0x87CEFA	//	µ­À¶É«
-#define	COLOR_SKYBLUE						0x87CEEB	//	ÌìÀ¶É«
-#define	COLOR_DEEPSKYBLUE					0x00BFFF	//	ÉîÌìÀ¶
-#define	COLOR_LIGHTBLUE						0xADD8E6	//	µ­À¶
-#define	COLOR_POWDERBLUE					0xB0E0E6	//	»ðÒ©À¶
-#define	COLOR_CADETBLUE						0x5F9EA0	//	¾üÐ£À¶
-#define	COLOR_AZURE							0xF0FFFF	//	ÎµÀ¶É«
-#define	COLOR_LIGHTCYAN						0xE1FFFF	//	µ­ÇàÉ«
-#define	COLOR_PALETURQUOISE					0xAFEEEE	//	²Ô°×µÄÂÌ±¦Ê¯
-#define	COLOR_CYAN							0x00FFFF	//	ÇàÉ«
-#define	COLOR_AQUA							0x00FFFF	//	Ë®ÂÌÉ«
-#define	COLOR_DARKTURQUOISE					0x00CED1	//	ÉîÂÌ±¦Ê¯
-#define	COLOR_DARKSLATEGRAY					0x2F4F4F	//	ÉîÊ¯°å»Ò
-#define	COLOR_DARKCYAN						0x008B8B	//	ÉîÇàÉ«
-#define	COLOR_TEAL							0x008080	//	Ë®Ñ¼É«
-#define	COLOR_MEDIUMTURQUOISE				0x48D1CC	//	ÊÊÖÐµÄÂÌ±¦Ê¯
-#define	COLOR_LIGHTSEAGREEN					0x20B2AA	//	Ç³º£ÑóÂÌ
-#define	COLOR_TURQUOISE						0x40E0D0	//	ÂÌ±¦Ê¯
-#define	COLOR_AUQAMARIN						0x7FFFAA	//	ÂÌÓñ\±ÌÂÌÉ«
-#define	COLOR_MEDIUMAQUAMARINE				0x00FA9A	//	ÊÊÖÐµÄ±ÌÂÌÉ«
-#define	COLOR_MEDIUMSPRINGGREEN				0x00FF7F	//	ÊÊÖÐµÄ´ºÌìµÄÂÌÉ«
-#define	COLOR_MINTCREAM						0xF5FFFA	//	±¡ºÉÄÌÓÍ
-#define	COLOR_SPRINGGREEN					0x3CB371	//	´ºÌìµÄÂÌÉ«
-#define	COLOR_SEAGREEN						0x2E8B57	//	º£ÑóÂÌ
-#define	COLOR_HONEYDEW						0xF0FFF0	//	·äÃÛ
-#define	COLOR_LIGHTGREEN					0x90EE90	//	µ­ÂÌÉ«
-#define	COLOR_PALEGREEN						0x98FB98	//	²Ô°×µÄÂÌÉ«
-#define	COLOR_DARKSEAGREEN					0x8FBC8F	//	Éîº£ÑóÂÌ
-#define	COLOR_LIMEGREEN						0x32CD32	//	Ëá³ÈÂÌ
-#define	COLOR_LIME							0x00FF00	//	Ëá³ÈÉ«
-#define	COLOR_FORESTGREEN					0x228B22	//	É­ÁÖÂÌ
-#define	COLOR_GREEN							0x008000	//	´¿ÂÌ
-#define	COLOR_DARKGREEN						0x006400	//	ÉîÂÌÉ«
-#define	COLOR_CHARTREUSE					0x7FFF00	//	²éÌØ¾ÆÂÌ
-#define	COLOR_LAWNGREEN						0x7CFC00	//	²ÝÆºÂÌ
-#define	COLOR_GREENYELLOW					0xADFF2F	//	ÂÌ»ÆÉ«
-#define	COLOR_OLIVEDRAB						0x556B2F	//	éÏé­ÍÁºÖÉ«
-#define	COLOR_BEIGE							0xF5F5DC	//	Ã×É«(Ç³ºÖÉ«)
-#define	COLOR_LIGHTGOLDENRODYELLOW			0xFAFAD2	//	Ç³Çï÷è÷ë»Æ
-#define	COLOR_IVORY							0xFFFFF0	//	ÏóÑÀ
-#define	COLOR_LIGHTYELLOW					0xFFFFE0	//	Ç³»ÆÉ«
-#define	COLOR_YELLOW						0xFFFF00	//	´¿»Æ
-#define	COLOR_OLIVE							0x808000	//	éÏé­
-#define	COLOR_DARKKHAKI						0xBDB76B	//	Éî¿¨Æä²¼
-#define	COLOR_LEMONCHIFFON					0xFFFACD	//	ÄûÃÊ±¡É´
-#define	COLOR_PALEGODENROD					0xEEE8AA	//	»ÒÇï÷è÷ë
-#define	COLOR_KHAKI							0xF0E68C	//	¿¨Æä²¼
-#define	COLOR_GOLD							0xFFD700	//	½ð
-#define	COLOR_CORNISLK						0xFFF8DC	//	ÓñÃ×É«
-#define	COLOR_GOLDENROD						0xDAA520	//	Çï÷è÷ë
-#define	COLOR_FLORALWHITE					0xFFFAF0	//	»¨µÄ°×É«
-#define	COLOR_OLDLACE						0xFDF5E6	//	ÀÏÊÎ´ø
-#define	COLOR_WHEAT							0xF5DEB3	//	Ð¡ÂóÉ«
-#define	COLOR_MOCCASIN						0xFFE4B5	//	Â¹Æ¤Ð¬
-#define	COLOR_ORANGE						0xFFA500	//	³ÈÉ«
-#define	COLOR_PAPAYAWHIP					0xFFEFD5	//	·¬Ä¾¹Ï
-#define	COLOR_BLANCHEDALMOND				0xFFEBCD	//	Æ¯°×µÄÐÓÈÊ
-#define	COLOR_NAVAJOWHITE					0xFFDEAD	//	ÄÉÍß»ô°×
-#define	COLOR_ANTIQUEWHITE					0xFAEBD7	//	¹Å´úµÄ°×É«
-#define	COLOR_TAN							0xD2B48C	//	É¹ºÚ
-#define	COLOR_BRULYWOOD						0xDEB887	//	½áÊµµÄÊ÷
-#define	COLOR_BISQUE						0xFFE4C4	//	(Å¨ÌÀ)ÈéÖ¬,·¬ÇÑµÈ
-#define	COLOR_DARKORANGE					0xFF8C00	//	Éî³ÈÉ«
-#define	COLOR_LINEN							0xFAF0E6	//	ÑÇÂé²¼
-#define	COLOR_PERU							0xCD853F	//	ÃØÂ³
-#define	COLOR_PEACHPUFF						0xFFDAB9	//	ÌÒÉ«
-#define	COLOR_SANDYBROWN					0xF4A460	//	É³×ØÉ«
-#define	COLOR_CHOCOLATE						0xD2691E	//	ÇÉ¿ËÁ¦
-#define	COLOR_SADDLEBROWN					0x8B4513	//	Âí°°×ØÉ«
-#define	COLOR_SEASHELL						0xFFF5EE	//	º£±´¿Ç
-#define	COLOR_SIENNA						0xA0522D	//	»ÆÍÁô÷É«
-#define	COLOR_LIGHTSALMON					0xFFA07A	//	Ç³ÏÊÈâ(öÙÓã)É«
-#define	COLOR_CORAL							0xFF7F50	//	Éºº÷
-#define	COLOR_ORANGERED						0xFF4500	//	³ÈºìÉ«
-#define	COLOR_DARKSALMON					0xE9967A	//	ÉîÏÊÈâ(öÙÓã)É«
-#define	COLOR_TOMATO						0xFF6347	//	·¬ÇÑ
-#define	COLOR_MISTYROSE						0xFFE4E1	//	±¡ÎíÃµ¹å
-#define	COLOR_SALMON						0xFA8072	//	ÏÊÈâ(öÙÓã)É«
-#define	COLOR_SNOW							0xFFFAFA	//	Ñ©
-#define	COLOR_LIGHTCORAL					0xF08080	//	µ­Éºº÷É«
-#define	COLOR_ROSYBROWN						0xBC8F8F	//	Ãµ¹å×ØÉ«
-#define	COLOR_INDIANRED						0xCD5C5C	//	Ó¡¶Èºì
-#define	COLOR_RED							0xFF0000	//	´¿ºì
-#define	COLOR_BROWN							0xA52A2A	//	×ØÉ«
-#define	COLOR_FIREBRICK						0xB22222	//	ÄÍ»ð×©
-#define	COLOR_DARKRED						0x8B0000	//	ÉîºìÉ«
-#define	COLOR_MAROON						0x800000	//	ÀõÉ«
-#define	COLOR_WHITE							0xFFFFFF	//	´¿°×
-#define	COLOR_WHITESMOKE					0xF5F5F5	//	°×ÑÌ
-#define	COLOR_GAINSBORO						0xDCDCDC	//	ÁÁ»ÒÉ«
-#define	COLOR_LIGHTGREY						0xD3D3D3	//	Ç³»ÒÉ«
-#define	COLOR_SILVER						0xC0C0C0	//	Òø°×É«
-#define	COLOR_DARKGRAY						0xA9A9A9	//	Éî»ÒÉ«
-#define	COLOR_GRAY							0x808080	//	»ÒÉ«
-#define	COLOR_DIMGRAY						0x696969	//	°µµ­µÄ»ÒÉ«
-#define	COLOR_BLACK							0x000000	//	´¿ºÚ
+// /*ï¿½ï¿½É«ï¿½ê¶¨ï¿½ï¿½*/								/*R G B*/
+// #define	COLOR_LIGHTPINK						0xFFB6C1	//	Ç³ï¿½Ûºï¿½
+// #define	COLOR_PINK							0xFFC0CB	//	ï¿½Ûºï¿½
+// #define	COLOR_CRIMSON						0xDC143C	//	ï¿½Éºï¿½
+// #define	COLOR_LAVENDERBLUSH					0xFFF0F5	//	ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½É«
+// #define	COLOR_PALEVIOLETRED					0xDB7093	//	ï¿½Ô°×µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_HOTPINK						0xFF69B4	//	ï¿½ï¿½ï¿½ï¿½Ä·Ûºï¿½
+// #define	COLOR_DEEPPINK						0xFF1493	//	ï¿½ï¿½ï¿½É«
+// #define	COLOR_MEDIUMVIOLETRED				0xC71585	//	ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_ORCHID						0xDA70D6	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_THISTLE						0xD8BFD8	//	ï¿½ï¿½
+// #define	COLOR_PLUM							0xDDA0DD	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_VIOLET						0xEE82EE	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_MAGENTA						0xFF00FF	//	ï¿½ï¿½ï¿½
+// #define	COLOR_FUCHSIA						0xFF00FF	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ïºï¿½É«)
+// #define	COLOR_DARKMAGENTA					0x8B008B	//	ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_PURPLE						0x800080	//	ï¿½ï¿½É«
+// #define	COLOR_MEDIUMORCHID					0xBA55D3	//	ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_DARKVOILET					0x9400D3	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_DARKORCHID					0x9932CC	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_INDIGO						0x4B0082	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_BLUEVIOLET					0x8A2BE2	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_MEDIUMPURPLE					0x9370DB	//	ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½É«
+// #define	COLOR_MEDIUMSLATEBLUE				0x7B68EE	//	ï¿½ï¿½ï¿½ÐµÄ°ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_SLATEBLUE						0x6A5ACD	//	ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_DARKSLATEBLUE					0x483D8B	//	ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_LAVENDER						0xE6E6FA	//	Ñ¬ï¿½Â²Ý»ï¿½ï¿½Äµï¿½ï¿½ï¿½É«
+// #define	COLOR_GHOSTWHITE					0xF8F8FF	//	ï¿½ï¿½ï¿½ï¿½Ä°ï¿½É«
+#define	COLOR_BLUE							0x0000FF	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_MEDIUMBLUE					0x0000CD	//	ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½É«
+// #define	COLOR_MIDNIGHTBLUE					0x191970	//	ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_DARKBLUE						0x00008B	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_NAVY							0x000080	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_ROYALBLUE						0x4169E1	//	ï¿½Ê¼ï¿½ï¿½ï¿½
+// #define	COLOR_CORNFLOWERBLUE				0x6495ED	//	Ê¸ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½É«
+// #define	COLOR_LIGHTSTEELBLUE				0xB0C4DE	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIGHTSLATEGRAY				0x778899	//	Ç³Ê¯ï¿½ï¿½ï¿½
+// #define	COLOR_SLATEGRAY						0x708090	//	Ê¯ï¿½ï¿½ï¿½
+// #define	COLOR_DODERBLUE						0x1E90FF	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_ALICEBLUE						0xF0F8FF	//	ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½
+// #define	COLOR_STEELBLUE						0x4682B4	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIGHTSKYBLUE					0x87CEFA	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_SKYBLUE						0x87CEEB	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_DEEPSKYBLUE					0x00BFFF	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIGHTBLUE						0xADD8E6	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_POWDERBLUE					0xB0E0E6	//	ï¿½ï¿½Ò©ï¿½ï¿½
+// #define	COLOR_CADETBLUE						0x5F9EA0	//	ï¿½ï¿½Ð£ï¿½ï¿½
+// #define	COLOR_AZURE							0xF0FFFF	//	Îµï¿½ï¿½É«
+// #define	COLOR_LIGHTCYAN						0xE1FFFF	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_PALETURQUOISE					0xAFEEEE	//	ï¿½Ô°×µï¿½ï¿½Ì±ï¿½Ê¯
+// #define	COLOR_CYAN							0x00FFFF	//	ï¿½ï¿½É«
+// #define	COLOR_AQUA							0x00FFFF	//	Ë®ï¿½ï¿½É«
+// #define	COLOR_DARKTURQUOISE					0x00CED1	//	ï¿½ï¿½ï¿½Ì±ï¿½Ê¯
+// #define	COLOR_DARKSLATEGRAY					0x2F4F4F	//	ï¿½ï¿½Ê¯ï¿½ï¿½ï¿½
+// #define	COLOR_DARKCYAN						0x008B8B	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_TEAL							0x008080	//	Ë®Ñ¼É«
+// #define	COLOR_MEDIUMTURQUOISE				0x48D1CC	//	ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ì±ï¿½Ê¯
+// #define	COLOR_LIGHTSEAGREEN					0x20B2AA	//	Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_TURQUOISE						0x40E0D0	//	ï¿½Ì±ï¿½Ê¯
+// #define	COLOR_AUQAMARIN						0x7FFFAA	//	ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_MEDIUMAQUAMARINE				0x00FA9A	//	ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½ï¿½É«
+// #define	COLOR_MEDIUMSPRINGGREEN				0x00FF7F	//	ï¿½ï¿½ï¿½ÐµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_MINTCREAM						0xF5FFFA	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_SPRINGGREEN					0x3CB371	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_SEAGREEN						0x2E8B57	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_HONEYDEW						0xF0FFF0	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIGHTGREEN					0x90EE90	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_PALEGREEN						0x98FB98	//	ï¿½Ô°×µï¿½ï¿½ï¿½É«
+// #define	COLOR_DARKSEAGREEN					0x8FBC8F	//	ï¿½îº£ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIMEGREEN						0x32CD32	//	ï¿½ï¿½ï¿½ï¿½ï¿½
+#define	COLOR_LIME							0x00FF00	//	ï¿½ï¿½ï¿½É«
+// #define	COLOR_FORESTGREEN					0x228B22	//	É­ï¿½ï¿½ï¿½ï¿½
+#define	COLOR_GREEN							0x008000	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_DARKGREEN						0x006400	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_CHARTREUSE					0x7FFF00	//	ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
+// #define	COLOR_LAWNGREEN						0x7CFC00	//	ï¿½ï¿½Æºï¿½ï¿½
+// #define	COLOR_GREENYELLOW					0xADFF2F	//	ï¿½Ì»ï¿½É«
+// #define	COLOR_OLIVEDRAB						0x556B2F	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_BEIGE							0xF5F5DC	//	ï¿½ï¿½É«(Ç³ï¿½ï¿½É«)
+// #define	COLOR_LIGHTGOLDENRODYELLOW			0xFAFAD2	//	Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_IVORY							0xFFFFF0	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_LIGHTYELLOW					0xFFFFE0	//	Ç³ï¿½ï¿½É«
+// #define	COLOR_YELLOW						0xFFFF00	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_OLIVE							0x808000	//	ï¿½ï¿½ï¿½
+// #define	COLOR_DARKKHAKI						0xBDB76B	//	ï¿½î¿¨ï¿½ä²¼
+// #define	COLOR_LEMONCHIFFON					0xFFFACD	//	ï¿½ï¿½ï¿½Ê±ï¿½É´
+// #define	COLOR_PALEGODENROD					0xEEE8AA	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_KHAKI							0xF0E68C	//	ï¿½ï¿½ï¿½ä²¼
+#define	COLOR_GOLD							0xFFD700	//	ï¿½ï¿½
+// #define	COLOR_CORNISLK						0xFFF8DC	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_GOLDENROD						0xDAA520	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_FLORALWHITE					0xFFFAF0	//	ï¿½ï¿½ï¿½Ä°ï¿½É«
+// #define	COLOR_OLDLACE						0xFDF5E6	//	ï¿½ï¿½ï¿½Î´ï¿½
+// #define	COLOR_WHEAT							0xF5DEB3	//	Ð¡ï¿½ï¿½É«
+// #define	COLOR_MOCCASIN						0xFFE4B5	//	Â¹Æ¤Ð¬
+// #define	COLOR_ORANGE						0xFFA500	//	ï¿½ï¿½É«
+// #define	COLOR_PAPAYAWHIP					0xFFEFD5	//	ï¿½ï¿½Ä¾ï¿½ï¿½
+// #define	COLOR_BLANCHEDALMOND				0xFFEBCD	//	Æ¯ï¿½×µï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_NAVAJOWHITE					0xFFDEAD	//	ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½
+// #define	COLOR_ANTIQUEWHITE					0xFAEBD7	//	ï¿½Å´ï¿½ï¿½Ä°ï¿½É«
+// #define	COLOR_TAN							0xD2B48C	//	É¹ï¿½ï¿½
+// #define	COLOR_BRULYWOOD						0xDEB887	//	ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_BISQUE						0xFFE4C4	//	(Å¨ï¿½ï¿½)ï¿½ï¿½Ö¬,ï¿½ï¿½ï¿½Ñµï¿½
+// #define	COLOR_DARKORANGE					0xFF8C00	//	ï¿½ï¿½ï¿½É«
+// #define	COLOR_LINEN							0xFAF0E6	//	ï¿½ï¿½ï¿½é²¼
+// #define	COLOR_PERU							0xCD853F	//	ï¿½ï¿½Â³
+// #define	COLOR_PEACHPUFF						0xFFDAB9	//	ï¿½ï¿½É«
+// #define	COLOR_SANDYBROWN					0xF4A460	//	É³ï¿½ï¿½É«
+// #define	COLOR_CHOCOLATE						0xD2691E	//	ï¿½É¿ï¿½ï¿½ï¿½
+// #define	COLOR_SADDLEBROWN					0x8B4513	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_SEASHELL						0xFFF5EE	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_SIENNA						0xA0522D	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_LIGHTSALMON					0xFFA07A	//	Ç³ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)É«
+// #define	COLOR_CORAL							0xFF7F50	//	Éºï¿½ï¿½
+// #define	COLOR_ORANGERED						0xFF4500	//	ï¿½Èºï¿½É«
+// #define	COLOR_DARKSALMON					0xE9967A	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)É«
+// #define	COLOR_TOMATO						0xFF6347	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_MISTYROSE						0xFFE4E1	//	ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½
+// #define	COLOR_SALMON						0xFA8072	//	ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)É«
+// #define	COLOR_SNOW							0xFFFAFA	//	Ñ©
+// #define	COLOR_LIGHTCORAL					0xF08080	//	ï¿½ï¿½Éºï¿½ï¿½É«
+// #define	COLOR_ROSYBROWN						0xBC8F8F	//	Ãµï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_INDIANRED						0xCD5C5C	//	Ó¡ï¿½Èºï¿½
+// #define	COLOR_RED							0xFF0000	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_BROWN							0xA52A2A	//	ï¿½ï¿½É«
+// #define	COLOR_FIREBRICK						0xB22222	//	ï¿½Í»ï¿½×©
+// #define	COLOR_DARKRED						0x8B0000	//	ï¿½ï¿½ï¿½É«
+// #define	COLOR_MAROON						0x800000	//	ï¿½ï¿½É«
+#define	COLOR_WHITE							0xFFFFFF	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_WHITESMOKE					0xF5F5F5	//	ï¿½ï¿½ï¿½ï¿½
+// #define	COLOR_GAINSBORO						0xDCDCDC	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_LIGHTGREY						0xD3D3D3	//	Ç³ï¿½ï¿½É«
+// #define	COLOR_SILVER						0xC0C0C0	//	ï¿½ï¿½ï¿½ï¿½É«
+// #define	COLOR_DARKGRAY						0xA9A9A9	//	ï¿½ï¿½ï¿½É«
+// #define	COLOR_GRAY							0x808080	//	ï¿½ï¿½É«
+// #define	COLOR_DIMGRAY						0x696969	//	ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½É«
+#define	COLOR_BLACK							0x000000	//	ï¿½ï¿½ï¿½ï¿½
+#define COLOR_AMARANTH                  0xFF0A78
  
-//ÉùÃ÷¹¦ÄÜº¯Êý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½
 void Ws2812b_Configuration(void);
 void Ws2812b_Write(u32 color);
  
  
 void RGB_Refresh(u32 color,u8 num);
+
+#if 0  // Reduce flash size
 void RGB_Cycle(u32 color,u8 num,u16 speed);
 void RGB_Wave(u32 color,u8 num,u16 speed);
 void RGB_Flash(u32 color,u8 num,u16 speed,u8 cnt);
+#endif // #if 0  // Reduce flash size
  
 #endif

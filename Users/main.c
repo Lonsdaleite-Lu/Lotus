@@ -30,6 +30,7 @@
 #include "timebase.h"
 #include "Mp3ModuleControl.h"
 #include "WS2812B.h"
+#include "LedSync.h"
 
 /* Private typedef -----------------------------------------------------------*/
 
@@ -105,10 +106,11 @@ void main(void)
   TimeBase_Init();
   
   /* Mp3 module control init ------------------------------------*/
-  MMC_Init();
+  //MMC_Init();
 
   /* led init ---------------------------------------------------*/
   Ws2812b_Configuration();
+  LS_Init(); // Testing
 
   /* Enable general interrupts -----------------------------------------*/
   enableInterrupts();
@@ -121,45 +123,48 @@ void main(void)
     if (TimeBase_Get1sSystemTimeDelta())
     {
         ucTestCounter += TimeBase_Get1sSystemTimeDelta();
+        LS_StartColorCycle();
     }
 
-    if (TimeBase_Get1sSystemTimeDelta())
-    {
-        MMC_Play();
-    }
+    // if (TimeBase_Get1sSystemTimeDelta())
+    // {
+    //     MMC_Play();
+    // }
 
-    if (ucTestCounter == 2)
-    {
-        // RGB_Wave(COLOR_LIGHTPINK,5,50000);
-        RGB_Refresh(COLOR_WHITE,5);
-        ucTestCounter++;
-    }
-    else if (ucTestCounter == 5)
-    {
-        RGB_Refresh(COLOR_GREEN,5);
-        ucTestCounter++;
-    }
-    else if (ucTestCounter == 8)
-    {
-        RGB_Refresh(COLOR_BLUE,5);
-        ucTestCounter++;
-    }
-    else if (ucTestCounter == 11)
-    {
-        RGB_Refresh(COLOR_RED,5);
-        ucTestCounter++;
-    }
-    else if (ucTestCounter == 14)
-    {
-        RGB_Refresh(COLOR_GOLD,5);
-        ucTestCounter++;
-    }
-    else if (ucTestCounter == 17)
-    {
-        RGB_Refresh(COLOR_PURPLE,5);
-        ucTestCounter = 0;
-    }
-    
+    // if (ucTestCounter == 2)
+    // {
+    //     // RGB_Wave(COLOR_LIGHTPINK,5,50000);
+    //     RGB_Refresh(COLOR_WHITE,5);
+    //     ucTestCounter++;
+    // }
+    // else if (ucTestCounter == 5)
+    // {
+    //     RGB_Refresh(COLOR_GREEN,5);
+    //     ucTestCounter++;
+    // }
+    // else if (ucTestCounter == 8)
+    // {
+    //     RGB_Refresh(COLOR_BLUE,5);
+    //     ucTestCounter++;
+    // }
+    // else if (ucTestCounter == 11)
+    // {
+    //     RGB_Refresh(COLOR_RED,5);
+    //     ucTestCounter++;
+    // }
+    // else if (ucTestCounter == 14)
+    // {
+    //     RGB_Refresh(COLOR_GOLD,5);
+    //     ucTestCounter++;
+    // }
+    // else if (ucTestCounter == 17)
+    // {
+    //     RGB_Refresh(COLOR_PURPLE,5);
+    //     ucTestCounter = 0;
+    // }
+    // RGB_Wave(COLOR_LIGHTPINK,5,65535);
+    // ColorWave();
+    LS_HandleColorCycle();
     
   }
 }
